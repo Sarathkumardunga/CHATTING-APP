@@ -1,11 +1,14 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const { chats } = require("./data/data");
+const connectDB = require("./config/db");
+const colors = require("colors");
+
+dotenv.config();
+connectDB();
 
 //0)create an instance
 const app = express();
-
-dotenv.config();
 
 //2)Create own expressjs API
 app.get("/", (req, res) => {
@@ -28,4 +31,4 @@ app.get("/api/chat/:id", (req, res) => {
 //coz we dont want out port to be known to others
 const PORT = process.env.PORT || 5000;
 //1) listen on port, optional message
-app.listen(5000, console.log(`Server started on port ${PORT}`));
+app.listen(5000, console.log(`Server started on port ${PORT}`.yellow.bold));
