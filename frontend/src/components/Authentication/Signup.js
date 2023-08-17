@@ -1,6 +1,13 @@
-import { VStack } from '@chakra-ui/layout'
-import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { VStack } from "@chakra-ui/layout";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -9,10 +16,13 @@ const Signup = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmpassword, setConfirmpassword] = useState();
-  
-  const handleClick = () => {
-    setShow(!show);
-  }
+  const [pic, setPic] = useState();
+
+  const handleClick = () => setShow(!show);
+
+  const postDetails = (pics) => {};
+
+  const submitHandler = () => {};
 
   return (
     <VStack spacing="5px">
@@ -20,14 +30,14 @@ const Signup = () => {
       <FormControl id="first-name" isRequired>
         <FormLabel>Name</FormLabel>
         <Input
-          placeHolder="Enter Your Name"
+          placeholder="Enter Your Name"
           onChange={(e) => {
             return setName(e.target.value);
           }}
         />
       </FormControl>
 
-      {/* Form space for emailz */}
+      {/* Form space for email */}
       <FormControl id="email" isRequired>
         <FormLabel>Email Address</FormLabel>
         <Input
@@ -70,8 +80,30 @@ const Signup = () => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
+
+      {/* Form space for pic upload */}
+      <FormControl id="pic">
+        <FormLabel>Upload your Picture</FormLabel>
+        <Input
+          type="file"
+          p={1.5}
+          accept="image/*"
+          //send only the first selected pictured incase multiple pictures are choosen
+          onChange={(e) => postDetails(e.target.files[0])}
+        />
+      </FormControl>
+
+      {/* Submit button field */}
+      <Button
+        colorScheme="blue"
+        width="100%"
+        style={{ marginTop: 15 }}
+        onClick={submitHandler}
+      >
+        Sign Up
+      </Button>
     </VStack>
   );
-}
+};
 
-export default Signup
+export default Signup;

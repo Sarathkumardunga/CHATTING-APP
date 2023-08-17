@@ -21,8 +21,9 @@ const Homepage = () => {
           textAlign={"center"}
           fontFamily="work sans"
           fontWeight={"bold"}
+          color={"gray"}
         >
-          Cool Chat
+          <span style={{color:"red"}}>C</span>ool Chat
         </Text>
       </Box>
 
